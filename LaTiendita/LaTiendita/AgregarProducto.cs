@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manejadores;
 
 namespace LaTiendita
 {
     public partial class AgregarProducto : Form
     {
-        ManejadorUsuario mu;
+        ManejadorProductos mp;
         public AgregarProducto()
         {
             InitializeComponent();
-            mu = new ManejadorUsuario();
-            if (BuscarUsuario.idProducto > 0)
+            mp = new ManejadorProductos();
+            if (BuscarProducto.idProducto > 0)
             {
-                txtNombre.Text = BuscarUsuario.Usuario.ToString();
-                txtDescripcion.Text = BuscarUsuario.Contrasena.ToString();
-                txtPrecio.Text = BuscarUsuario.Nivel.ToString();
+                txtNombre.Text = BuscarProducto.Nombre.ToString();
+                txtDescripcion.Text = BuscarProducto.Descripcion.ToString();
+                txtPrecio.Text = BuscarProducto.Precio.ToString();
             }
         }
 
@@ -32,7 +33,7 @@ namespace LaTiendita
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (BuscarUsuario.idProducto > 0)
+            if (BuscarProducto.idProducto > 0)
             {
                 if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(txtPrecio.Text))
                 {
@@ -40,10 +41,10 @@ namespace LaTiendita
                 }
                 else
                 {
-                    mu.Modificar(BuscarUsuario.idProducto, txtNombre, txtDescripcion, txtPrecio);
+                    mp.Modificar(BuscarProducto.idProducto, txtNombre, txtDescripcion, txtPrecio);
                     Close();
-                    BuscarUsuario bu = new BuscarUsuario();
-                    bu.Show();
+                    BuscarProducto bp = new BuscarProducto();
+                    bp.Show();
                 }
             }
             else
