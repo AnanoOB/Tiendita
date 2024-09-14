@@ -58,6 +58,7 @@
             this.btnAceptar.TabIndex = 14;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click_1);
             // 
             // txtDescripcion
             // 
@@ -120,7 +121,7 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Nombre";
             // 
-            // Form1
+            // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,7 +137,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
+            this.Name = "AgregarProducto";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -18,7 +18,7 @@ namespace LaTiendita
         {
             InitializeComponent();
             mp = new ManejadorProductos();
-            if (BuscarProducto.idProducto > 0)
+            if (BuscarProducto.idProductos > 0)
             {
                 txtNombre.Text = BuscarProducto.Nombre.ToString();
                 txtDescripcion.Text = BuscarProducto.Descripcion.ToString();
@@ -33,7 +33,12 @@ namespace LaTiendita
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (BuscarProducto.idProducto > 0)
+            
+        }
+
+        private void btnAceptar_Click_1(object sender, EventArgs e)
+        {
+            if (BuscarProducto.idProductos > 0)
             {
                 if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(txtPrecio.Text))
                 {
@@ -41,7 +46,7 @@ namespace LaTiendita
                 }
                 else
                 {
-                    mp.Modificar(BuscarProducto.idProducto, txtNombre, txtDescripcion, txtPrecio);
+                    mp.Modificar(BuscarProducto.idProductos, txtNombre, txtDescripcion, txtPrecio);
                     Close();
                     BuscarProducto bp = new BuscarProducto();
                     bp.Show();
@@ -56,7 +61,7 @@ namespace LaTiendita
                 }
                 else
                 {
-                    MessageBox.Show(mu.Guardar(txtNombre, txtDescripcion, txtPrecio), "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mp.Guardar(txtNombre, txtDescripcion, txtPrecio), "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }

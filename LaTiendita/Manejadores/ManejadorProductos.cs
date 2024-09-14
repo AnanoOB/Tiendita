@@ -16,7 +16,7 @@ namespace Manejadores
         {
             try
             {
-                return b.comando($"insert into Productos values (null,'{Nombre.Text}', '{Descripcion.Text}', '{Precio.Text}')");
+                return b.comando($"insert into Productos values (null,'{Nombre.Text}', '{Descripcion.Text}', '{Precio}')");
             }
             catch (Exception)
             {
@@ -26,7 +26,7 @@ namespace Manejadores
         public void Mostrar(DataGridView tabla, string filtro)
         {
             tabla.Columns.Clear();
-            tabla.DataSource = b.Consultar($"select * from Productos where Nombre like '%{filtro}%'", "Productos").Tables[0];
+            tabla.DataSource = b.Consultar($"select * from Productos where Precio like '%{filtro}%'", "Productos").Tables[0];
             tabla.Columns.Insert(4, Boton("Eliminar", Color.Blue));
             tabla.Columns.Insert(5, Boton("Modificar", Color.Blue));
             tabla.AutoResizeColumns();
@@ -45,7 +45,7 @@ namespace Manejadores
 
         public void Modificar(int idProductos, TextBox Nombre, TextBox Descripcion, TextBox Precio)
         {
-            b.comando($"Update Productos set Nombre='{Nombre.Text}',Descripcion='{Descripcion.Text}', Precio='{Precio.Text}' where idProducto={idProductos}");
+            b.comando($"Update Productos set Nombre='{Nombre.Text}',Descripcion='{Descripcion.Text}', Precio='{Precio}' where idProductos={idProductos}");
             MessageBox.Show("Registro Modificado", "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -54,7 +54,7 @@ namespace Manejadores
             DialogResult rs = MessageBox.Show($"Esta seguro de borrar {Dato}", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rs == DialogResult.Yes)
             {
-                b.comando($"Delete from Productos where idLogin={idProductos}");
+                b.comando($"Delete from Productos where idProductos={idProductos}");
                 MessageBox.Show("Registro Eliminado", "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

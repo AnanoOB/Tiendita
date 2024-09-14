@@ -26,7 +26,7 @@ namespace AccesoDatos
                 con.Open();
                 i.ExecuteNonQuery();
                 con.Close();
-                rs = "Correcto";
+                rs = "Corr3cto";
             }
             catch (Exception ex)
             {
